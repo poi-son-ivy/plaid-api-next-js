@@ -28,7 +28,8 @@ export async function sendSmsVerification(
     });
 }
 
-export async function checkSmsVerification(phoneNumber: string, code: string) {
+export async function checkSmsVerification(phoneNumber: string, code: string)
+: Promise<string> {
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
     const serviceSid = process.env.TWILIO_SERVICE_SID;
