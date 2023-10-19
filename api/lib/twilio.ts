@@ -8,6 +8,10 @@ export async function sendSmsVerification(
     const serviceSid = process.env.TWILIO_SERVICE_SID;
     const client = require('twilio')(accountSid, authToken);
 
+    if(!checkPhoneNumberFormat(phoneNumber)){
+        throw new Error(`sendSmsVerification: invalid phone number format ${phoneNumber}`);
+    }
+
     logger.info(`Sending SMS verification for phone number ${phoneNumber}`);
 
     return new Promise((resolve, reject) => {
@@ -30,6 +34,10 @@ export async function checkSmsVerification(phoneNumber: string, code: string) {
     const serviceSid = process.env.TWILIO_SERVICE_SID;
     const client = require('twilio')(accountSid, authToken);
 
+    if(!checkPhoneNumberFormat(phoneNumber)){
+        throw new Error(`checkSmsVerification: invalid phone number format ${phoneNumber}`);
+    }
+
     logger.info(`Verifying user with phone number ${phoneNumber} and code ${code}`);
 
     return new Promise((resolve, reject) => {
@@ -44,4 +52,9 @@ export async function checkSmsVerification(phoneNumber: string, code: string) {
                 resolve(verification_check.status);
             });
     });
+}
+
+function checkPhoneNumberFormat(number:string):boolean {
+    const phoneNumberPattern = /^\d{10}$/;
+    return phoneNumberPattern.test(number);
 }
