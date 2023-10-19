@@ -40,9 +40,9 @@ export default async function handler(
 
     } catch (error: any) {
         if (error instanceof Error) {
-            logger.error(`create-link-token: Error occurred - ${error.message}`);
+            logger.error(`createLinkToken: Error occurred - ${error.message}`);
         } else {
-            logger.error('create-link-token: An unknown error occurred');
+            logger.error('createLinkToken: An unknown error occurred');
         }
         res.status(500).json({ error: 'An error occurred while creating the link token' });
         return;
