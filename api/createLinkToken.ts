@@ -2,10 +2,27 @@ import logger from './supporting/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { CountryCode, Products } from 'plaid';
 import { plaidClient} from "./lib/plaid";
+import {getServerSession} from "next-auth";
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+
+    const session: { user: { email: string } } | null = await getServerSession(
+        req,
+        res,
+        null //note: replace this with the Nextauth var when sample Nextauth code is completed!
+    );
+
+    //this project using next-auth to authenticate users, so we check whether we have a valid session
+    //early on in the route / return + 401 if we don't
+
+    if (!session) {
+        logger.error('createLinkToken: No session found');
+        res.status(401).json({ message: 'Unauthorized' });
+        return;
+    }
+
 
     try {
         const tokenResponse = await plaidClient.linkTokenCreate({
