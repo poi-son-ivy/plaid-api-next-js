@@ -11,7 +11,7 @@ Data layer:
   -Since we are going relational we are going with a normalized schema, with additional scaling details we might consider denormalizing / preparing for sharding at the 
    application layer / etc. 
    
-  -Data model / ERD : <link to figma>
+  -Data model / ERD : https://www.figma.com/file/Mse2uBfyq91YyRT93lS2iQ/Plaid-NextJS-ERD?type=whiteboard&node-id=0%3A1&t=okAlUeME9aLYP5et-1
   
   -A sample schema is included under /schema. In practice we would want to handle DB migrations in some organized manner such as using DBMate, Prisma, etc. 
   
