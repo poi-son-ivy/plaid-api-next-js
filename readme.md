@@ -1,4 +1,4 @@
-Obfuscated code samples for a Next.JS app that interacts with the Plaid API to interact with financial institutions.
+Hi! This repo is a work-in-progress for samples of some of my most recent work with Next.Js and the Plaid financial API. It will contain architecture, design and rationale in addition to obfuscated backend code samples for a Next.JS app that interacts with the Plaid API to work with financial data. The overall application will be serverless, utilizing Vercel for compute and Vercel DB / Neon for persistent storage (optionally including a message queue / cache in the future). 
 
 High-Level Architecture : https://www.figma.com/file/8EhUyIk7rk8WekdFi4rHAB/Example-Plaid-NextJS-High-Level-Architecture?type=whiteboard&node-id=0%3A1&t=LTfGIpPHArxuTrOL-1
 
